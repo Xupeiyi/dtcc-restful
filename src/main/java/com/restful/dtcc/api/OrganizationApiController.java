@@ -17,20 +17,19 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/api")
-public class OrganizationApiController {
+public class OrganizationApiController implements OrganizationApi{
 
     @Autowired
     private OrganizationRepository orgRepository;
-
-    @GetMapping("/family/{familyId}/organizations")
-    public ResponseEntity<List<Organization>> getAllOrgsByFamilyId(@PathVariable(value="familyId") Long familyId){
-        List<Organization> organizations = orgRepository.findByFamilyFamilyId(familyId);
-        return new ResponseEntity<>(organizations, HttpStatus.OK);
-    }
 
     @GetMapping("/organization/{orgId}")
     public ResponseEntity<Organization> getOrganizationByOrgId(@PathVariable(value="orgId") Long orgId){
         return new ResponseEntity<>(orgRepository.findOrganizationByOrgId(orgId), HttpStatus.OK);
     }
 
+    @GetMapping("/family/{familyId}/organizations")
+    public ResponseEntity<List<Organization>> getAllOrgsByFamilyId(@PathVariable(value="familyId") Long familyId){
+        List<Organization> organizations = orgRepository.findByFamilyFamilyId(familyId);
+        return new ResponseEntity<>(organizations, HttpStatus.OK);
+    }
 }
