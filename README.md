@@ -1,21 +1,15 @@
+# DTCC-Restful APIs
+This project implements Restful APIs for CTM, Alert & Trade Suite.
 
-# Spring JPA Snowflake
+## Connect to Snowflake
 
-Before running the project please update the application.properties under src/main/resources with your snowflake connection details
+Before running the project please set up the environmental variables to update the application.properties under src/main/resources with your snowflake connection details
 ```
-spring.datasource.url=jdbc:snowflake://yourcompany.snowflakecomputing.com/?db=DB_NAME&warehouse=WAREHOUSE_NAME&CLIENT_SESSION_KEEP_ALIVE=true&schema=SCHEMA_NAME
-spring.datasource.username=USER_NAME
-spring.datasource.password=USER_PWD
+spring.datasource.url=jdbc:snowflake://${SNOWFLAKE_ACCOUNTNAME}.us-east-1.snowflakecomputing.com:443?db=${SNOWFLAKE_DATABASE}&warehouse=${SNOWFLAKE_WAREHOUSE}&schema=GRAPHQL
+spring.datasource.username=${SNOWFLAKE_USER}
+spring.datasource.password=${SNOWFLAKE_PASSWORD}
 ```
 
-# In Snowflake create below to test 
-```
-CREATE TABLE STUDENT (STUDENT_ID NUMBER(4,0), STUDENT_NAME VARCHAR(25), CLASS_ID VARCHAR(10));
-INSERT INTO STUDENT VALUES (1, 'RYAN', '6');
-INSERT INTO STUDENT VALUES (2, 'MATT', '6');
-INSERT INTO STUDENT VALUES (3, 'BILL', '6');
-INSERT INTO STUDENT VALUES (4, 'STEVE', '6');
-```
 
 ## Software required to build and run
 ```
@@ -27,10 +21,10 @@ Maven: Apache Maven 3.6.3+
 If you are updating the package, please change the references in
 ```
 com.restful.dtcc.SpringJpaSnowflakeServiceApplication
-   Line 11:  @ComponentScan(basePackages = "com.github.yshameer.springjpa")
+   Line 11:  @ComponentScan(basePackages = com.restful)
 
 configuration.com.restful.dtcc.SwaggerDocumentationConfig
-   Line 30: RequestHandlerSelectors.basePackage("com.github.yshameer.springjpa.snowflake.service.api")
+   Line 30: RequestHandlerSelectors.basePackage(com.restful.dtcc.api)
    
 application.properties
    spring.jpa.properties.hibernate.dialect=dialect.com.restful.dtcc.SnowflakeDialect
@@ -48,7 +42,7 @@ mvn spring-boot:run
 
 ## Testing Local
 ```
-http://localhost:8080/student?studentId={studentId}
+http://localhost:8080/family?familyId={familyId}
 
 Swagger UI: http://localhost:8080
 ```
