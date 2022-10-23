@@ -1,4 +1,4 @@
-package com.github.yshameer.springjpa.snowflake.service.dialect;
+package com.restful.dtcc.dialect;
 
 import org.hibernate.dialect.Dialect;
 

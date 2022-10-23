@@ -3,11 +3,11 @@
   http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.yshameer</groupId>
+    <groupId>com.restful.dtcc</groupId>
     <artifactId>springjpasnowflake-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>springjpasnowflake-service</name>
-    <description>springjpasnowflake-service</description>
+    <name>dtcc-restful</name>
+    <description>dtcc-restful</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

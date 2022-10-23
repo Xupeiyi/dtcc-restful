@@ -1,4 +1,4 @@
-package com.github.yshameer.springjpa.snowflake.service.configuration;
+package com.restful.dtcc.configuration;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

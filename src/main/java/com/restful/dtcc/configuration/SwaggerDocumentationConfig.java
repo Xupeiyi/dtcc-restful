@@ -1,4 +1,4 @@
-package com.github.yshameer.springjpa.snowflake.service.configuration;
+package com.restful.dtcc.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +14,8 @@ public class SwaggerDocumentationConfig {
 
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Data Jpa Snowflake Service API")
-                .description("Spring Data Jpa Snowflake Service API")
+                .title("DTCC Data API")
+                .description("Restful API for CTM, Alert & Trade Suite")
                 .license("")
                 .termsOfServiceUrl("")
                 .version("1.0.0")
@@ -27,7 +27,7 @@ public class SwaggerDocumentationConfig {
     public Docket customImplementation() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.github.yshameer.springjpa.snowflake.service.api"))
+                .apis(RequestHandlerSelectors.basePackage("com.restful.dtcc.api"))
                 .build()
                 .apiInfo(apiInfo());
     }

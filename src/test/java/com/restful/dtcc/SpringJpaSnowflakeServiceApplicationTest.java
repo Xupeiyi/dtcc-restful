@@ -1,9 +1,9 @@
-package com.github.yshameer.springjpa.snowflake.service;
+package com.restful.dtcc;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
-import com.github.yshameer.springjpa.snowflake.service.entity.Student;
+import com.restful.dtcc.entity.Family;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,16 +39,16 @@ public class SpringJpaSnowflakeServiceApplicationTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    @DatabaseSetup(value = "/data/student.xml")
-    @ExpectedDatabase("/data/student.xml")
-    public void shouldReturnStudentSuccessfully() {
+    @DatabaseSetup(value = "/data/family.xml")
+    @ExpectedDatabase("/data/family.xml")
+    public void shouldReturnFamilySuccessfully() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
         Map<String, Long> params = new HashMap<>();
-        params.put("studentId", 5L);
-        ResponseEntity<Student> responseEntity = restTemplate.exchange("/student?studentId={studentId}", HttpMethod.GET, entity, Student.class, params);
-        assertEquals("Mark", responseEntity.getBody().getStudentName());
+        params.put("familyId", 5L);
+        ResponseEntity<Family> responseEntity = restTemplate.exchange("/family?familyId={familyId}", HttpMethod.GET, entity, Family.class, params);
+        assertEquals("Mark", responseEntity.getBody().getFamilyName());
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 

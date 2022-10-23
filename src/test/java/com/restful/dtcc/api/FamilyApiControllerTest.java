@@ -1,7 +1,7 @@
-package com.github.yshameer.springjpa.snowflake.service.api;
+package com.restful.dtcc.api;
 
-import com.github.yshameer.springjpa.snowflake.service.entity.Student;
-import com.github.yshameer.springjpa.snowflake.service.repository.StudentRepository;
+import com.restful.dtcc.entity.Family;
+import com.restful.dtcc.repository.FamilyRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +17,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(StudentApiController.class)
-public class StudentApiControllerTest {
+@WebMvcTest(FamilyApiController.class)
+public class FamilyApiControllerTest {
 
     @MockBean
-    StudentRepository studentRepository;
+    FamilyRepository familyRepository;
 
     @Autowired
     private MockMvc mvc;
 
 
     @Test
-    public void testStudentMockData() throws Exception {
-        Student student = new Student();
-        student.setStudentId(1L);
-        student.setStudentName("Ryan");
-        student.setClassId("6");
-        when((studentRepository).findStudentById(1L)).thenReturn(student);
+    public void testFamilyMockData() throws Exception {
+        Family family = new Family();
+        family.setFamilyId(1L);
+        family.setFamilyName("Ryan");
+        family.setFamilyDescription("6");
+        when((familyRepository).findFamilyById(1L)).thenReturn(family);
 
 
-        mvc.perform(get("/student")
-                .param("studentId", "1")
+        mvc.perform(get("/family")
+                .param("familyId", "1")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON));
