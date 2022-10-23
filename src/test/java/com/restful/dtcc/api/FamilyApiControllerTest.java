@@ -2,6 +2,7 @@ package com.restful.dtcc.api;
 
 import com.restful.dtcc.entity.Family;
 import com.restful.dtcc.repository.FamilyRepository;
+import com.restful.dtcc.repository.OrganizationRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class FamilyApiControllerTest {
     @MockBean
     FamilyRepository familyRepository;
 
+    @MockBean
+    OrganizationRepository organizationRepository;
+
     @Autowired
     private MockMvc mvc;
 
@@ -33,11 +37,10 @@ public class FamilyApiControllerTest {
         family.setFamilyId(1L);
         family.setFamilyName("Ryan");
         family.setFamilyDescription("6");
-        when((familyRepository).findFamilyById(1L)).thenReturn(family);
+        when((familyRepository).findByFamilyId(1L)).thenReturn(family);
 
 
-        mvc.perform(get("/family")
-                .param("familyId", "1")
+        mvc.perform(get("/api/family/1")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON));

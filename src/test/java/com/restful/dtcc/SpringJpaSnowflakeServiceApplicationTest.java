@@ -45,9 +45,9 @@ public class SpringJpaSnowflakeServiceApplicationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
-        Map<String, Long> params = new HashMap<>();
-        params.put("familyId", 5L);
-        ResponseEntity<Family> responseEntity = restTemplate.exchange("/family?familyId={familyId}", HttpMethod.GET, entity, Family.class, params);
+        //Map<String, Long> params = new HashMap<>();
+        //params.put("familyId", 5L);
+        ResponseEntity<Family> responseEntity = restTemplate.exchange("/api/family/5", HttpMethod.GET, entity, Family.class);
         assertEquals("Mark", responseEntity.getBody().getFamilyName());
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
