@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Api(value = "family")
 public interface FamilyApi {
 
-    @ApiOperation(value = "", response = Family.class, tags = {"Family",})
+    @ApiOperation(value = "Get family by family_id", response = Family.class, tags = {"Family",})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "A successful family record", response = Family.class)})
     @RequestMapping(value = "/family/{id}", produces = {"application/json"}, method = RequestMethod.GET)
     ResponseEntity<Family> getFamilyById(@PathVariable("id") Long familyId);
