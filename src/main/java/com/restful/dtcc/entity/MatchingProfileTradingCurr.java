@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 @Setter
 public class MatchingProfileTradingCurr {
 
+    @Id
     @Column(name = "TRADING_CURRENCY_CODE")
     private Long tradingCurrencyCode;
 

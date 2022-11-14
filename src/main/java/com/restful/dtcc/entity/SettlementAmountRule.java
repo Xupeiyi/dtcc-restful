@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 @Setter
 public class SettlementAmountRule {
 
+    @Id
     @Column(name = "MATCHING_PROFILE_ID")
     private Long matchingProfileId;
 

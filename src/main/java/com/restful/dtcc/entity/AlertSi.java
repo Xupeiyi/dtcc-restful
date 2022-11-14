@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.sql.Date;
 
 
 @Entity
@@ -65,5 +66,5 @@ public class AlertSi{
     private Long status;
 
     @Column(name = "salt")
-    private String salt
+    private String salt;
 }

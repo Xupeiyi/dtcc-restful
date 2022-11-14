@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 @Setter
 public class MatchingProfileComparator {
 
+    @Id
     @Column(name = "MATCHING_FIELD_NAME")
     private String matchingFieldName;
 

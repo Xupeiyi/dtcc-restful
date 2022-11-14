@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Table(name = "TIMEZOON_OFFSET")
 @Getter
 @Setter
-public class TimezoonOffset {
+public class TimezoneOffset {
 
     @Id
     @Column(name = "ID")

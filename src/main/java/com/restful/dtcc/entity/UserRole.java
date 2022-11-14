@@ -3,6 +3,7 @@ package com.restful.dtcc.entity;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 
@@ -10,14 +11,18 @@ import java.sql.Timestamp;
 @Table(name = "USER_ROLE")
 @Getter
 @Setter
-public class UserRole {
+public class UserRole implements Serializable {
+    private static final long serialVersionUID = 1L;
 
+    @Id
     @Column(name = "ROLE_ID")
     private Long roleId;
 
+    @Id
     @Column(name = "USER_ID")
     private Long userId;
 
+    @Id
     @Column(name = "ORG_ID")
     private Long orgId;
 

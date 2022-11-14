@@ -2,6 +2,8 @@ package com.restful.dtcc.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -12,6 +14,7 @@ import java.sql.Timestamp;
 @Setter
 public class LiveTradeDetails {
 
+    @Id
     @Column(name = "TRADE_DETAIL_ID")
     private Long tradeDetailId;
 

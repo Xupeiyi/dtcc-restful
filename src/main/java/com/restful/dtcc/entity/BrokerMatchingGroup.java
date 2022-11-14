@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Table(name = "BROKER_MATCHING_GROUP")
 @Getter
 @Setter
-public class brokerMatchingGroup {
+public class BrokerMatchingGroup {
 
     //instructing_party_org_id INT foreign key references organization(org_id),
 

@@ -23,7 +23,7 @@ public class ErrorParameterTypeLp {
     private String description;
 
     @Column(name = "INACTIVE_DATE")
-    private Date inactiveDate;
+    private Timestamp inactiveDate;
 
 
 }

@@ -54,7 +54,4 @@ public class Location{
 
     @Column(name = "location_phone")
     private String locationPhone;
-
-    @Column(name = "location_phone")
-    private String locationPhone;
 }
