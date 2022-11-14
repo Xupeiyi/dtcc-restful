@@ -19,4 +19,11 @@ public interface UserInfoApi {
     })
     ResponseEntity<UserInfo> getUserInfoByUserId(Long familyId);
 
+
+    @ApiOperation(value = "Get user info by location.political_subdivision and role.role_name", tags = {"UserInfo",})
+    @ApiResponses(value = {
+            @ApiResponse(code=200, message="OK", response= UserInfo.class, responseContainer = "List")
+    })
+    ResponseEntity<List<UserInfo>> getUserInfoByPoliticalSubdivisionAndRoleName(String politicalSubdivision, String roleName);
+
 }

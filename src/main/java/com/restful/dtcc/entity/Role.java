@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -36,4 +38,10 @@ public class Role{
 
     @Column(name = "local_flag")
     private String localFlag;
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "roles"
+    )
+    private Set<UserInfo> userInfos = new HashSet<>();
 }

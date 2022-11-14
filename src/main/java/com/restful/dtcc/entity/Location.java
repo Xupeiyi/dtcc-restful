@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -54,4 +56,13 @@ public class Location{
 
     @Column(name = "location_phone")
     private String locationPhone;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name="user_location",
+            joinColumns = {@JoinColumn(name="LOCATION_ID")},
+            inverseJoinColumns = {@JoinColumn(name="USER_ID")}
+    )
+    private Set<UserInfo> userInfos = new HashSet<>();
+
 }
