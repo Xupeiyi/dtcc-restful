@@ -11,6 +11,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "ORGANIZATION")
@@ -57,5 +60,9 @@ public class Organization {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Family family;
+
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name="ORG_ID")
+    private List<OrganizationXref> organizationXref;
 
 }

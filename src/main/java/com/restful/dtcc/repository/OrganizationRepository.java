@@ -8,5 +8,8 @@ import com.restful.dtcc.entity.Organization;
 
 public interface OrganizationRepository extends JpaRepository<Organization, Long> {
     List<Organization> findByFamilyFamilyId(Long familyId);
+
     Organization findOrganizationByOrgId(Long orgId);
+
+    Organization findByOrganizationXrefOrgXrefTypeAndOrganizationXrefOrgXrefValue(String xrefType, String xrefValue);
 }

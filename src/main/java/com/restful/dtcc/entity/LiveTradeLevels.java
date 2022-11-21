@@ -1,7 +1,11 @@
 package com.restful.dtcc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.sql.Date;
@@ -19,6 +23,23 @@ public class LiveTradeLevels {
     @Column(name = "ORIGINATOR_OF_MESSAGE_ID")
     private Long originatorOfMessageId;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "INSTRUCTING_PARTY_ORG_ID", referencedColumnName = "ORG_ID", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Organization instructingParty;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "COUNTER_PARTY_ORG_ID", referencedColumnName = "ORG_ID", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Organization counterParty;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "EXECUTING_BROKER_ORG_ID", referencedColumnName = "ORG_ID", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Organization executingBrokerOrgId;
     //counter_party_org_id INT foreign key references organization(org_id),
     //instructing_party_org_id INT foreign key references organization(org_id),
     //executing_broker_org_id INT foreign key references organization(org_id),
@@ -35,8 +56,8 @@ public class LiveTradeLevels {
     @Column(name = "EXECUTING_BROKER")
     private String executingBroker;
 
-    @Column(name = "INSTRUCTING_PARTY")
-    private String instructingParty;
+//    @Column(name = "INSTRUCTING_PARTY")
+//    private String instructingParty;
 
     @Column(name = "QUANTITY_OF_BLOCK_TRADE")
     private String quantityOfBlockTrade;
@@ -88,8 +109,16 @@ public class LiveTradeLevels {
     @Column(name = "TL_BAG_OBJECT_TYPE")
     private Long tlBagObjectType;
 
-    @Column(name = "SECURITY_CODE_TYPE")
-    private Long securityCodeType;
+//    @Column(name = "SECURITY_CODE_TYPE")
+//    private Long securityCodeType;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "SECURITY_CODE_TYPE", referencedColumnName = "CODE"
+    )
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private SecurityTypeLp securityTypeLp;
 
     @Column(name = "SECURITY_CODE")
     private Long securityCode;
@@ -142,7 +171,7 @@ public class LiveTradeLevels {
     @Column(name = "COMPLETE_STATUS_DTM")
     private Timestamp completeStatusDtm;
 
-    @Column(name = "MATCH_STATUS_STM")
+    @Column(name = "MATCH_STATUS_DTM")
     private Timestamp matchStatusDtm;
 
     @Column(name = "MATCH_AGREED_STATUS_DTM")

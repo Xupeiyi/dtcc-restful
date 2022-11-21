@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,5 +32,13 @@ public class OrganizationApiController implements OrganizationApi{
     public ResponseEntity<List<Organization>> getAllOrgsByFamilyId(@PathVariable(value="familyId") Long familyId){
         List<Organization> organizations = orgRepository.findByFamilyFamilyId(familyId);
         return new ResponseEntity<>(organizations, HttpStatus.OK);
+    }
+
+    @GetMapping("/organization")
+    public ResponseEntity<Organization> getOrganizationByXrefTypeAndXrefValue(
+            @RequestParam(value="xrefType") String xrefType, @RequestParam(value="xrefValue") String xrefValue){
+        return new ResponseEntity<>(orgRepository.findByOrganizationXrefOrgXrefTypeAndOrganizationXrefOrgXrefValue(
+                xrefType, xrefValue
+        ), HttpStatus.OK);
     }
 }
