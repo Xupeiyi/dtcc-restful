@@ -48,7 +48,7 @@ public class LiveTradeLevelsApiController {
         ), HttpStatus.OK);
     }
 
-    @GetMapping("/live_trade_levels1")
+    @GetMapping("/live_trade_levels_by_location")
     public ResponseEntity<List<LiveTradeLevels>> getLiveTradeLevelsByInstructingPartyLocation(
             @RequestParam(value="politicalSubdivision") String politicalSubdivision
     ){
