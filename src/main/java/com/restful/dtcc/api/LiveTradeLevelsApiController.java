@@ -48,6 +48,15 @@ public class LiveTradeLevelsApiController {
         ), HttpStatus.OK);
     }
 
+    @GetMapping("/live_trade_levels1")
+    public ResponseEntity<List<LiveTradeLevels>> getLiveTradeLevelsByInstructingPartyLocation(
+            @RequestParam(value="politicalSubdivision") String politicalSubdivision
+    ){
+        List<Organization> organizations = orgRepo.findByLocationsPoliticalSubdivision(politicalSubdivision);
+        List<LiveTradeLevels> tradeLevels = liveTradeLevelsRepository.findByInstructingPartyIn(organizations);
+        return new ResponseEntity<>(tradeLevels, HttpStatus.OK);
+    }
+
 }
 
 

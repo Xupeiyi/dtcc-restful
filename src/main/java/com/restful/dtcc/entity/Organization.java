@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -64,5 +65,13 @@ public class Organization {
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name="ORG_ID")
     private List<OrganizationXref> organizationXref;
+
+
+    @JsonIgnore
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "organizations"
+    )
+    private Set<Location> locations = new HashSet<>();
 
 }

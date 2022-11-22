@@ -65,4 +65,12 @@ public class Location{
     )
     private Set<UserInfo> userInfos = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name="organization_location",
+            joinColumns = {@JoinColumn(name="LOCATION_ID")},
+            inverseJoinColumns = {@JoinColumn(name="ORG_ID")}
+    )
+    private Set<Organization> organizations = new HashSet<>();
+
 }
