@@ -1,10 +1,13 @@
 package com.restful.dtcc.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -12,6 +15,7 @@ import java.util.Set;
 @Table(name = "location")
 @Getter
 @Setter
+@JsonFilter("locationFilter")
 public class Location{
 
     @Id
@@ -71,6 +75,7 @@ public class Location{
             joinColumns = {@JoinColumn(name="LOCATION_ID")},
             inverseJoinColumns = {@JoinColumn(name="ORG_ID")}
     )
-    private Set<Organization> organizations = new HashSet<>();
+    @JsonIgnore
+    private List<Organization> organizations;// = new HashSet<>();
 
 }

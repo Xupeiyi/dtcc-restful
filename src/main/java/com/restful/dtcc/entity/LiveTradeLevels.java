@@ -1,5 +1,6 @@
 package com.restful.dtcc.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.sql.Date;
 @Table(name = "LIVE_TRADE_LEVELS")
 @Getter
 @Setter
+@JsonFilter("tradeLevelFilter")
 public class LiveTradeLevels {
 
     @Id
@@ -26,7 +28,7 @@ public class LiveTradeLevels {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "INSTRUCTING_PARTY_ORG_ID", referencedColumnName = "ORG_ID", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    //@JsonIgnore
     private Organization instructingParty;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -109,15 +111,11 @@ public class LiveTradeLevels {
     @Column(name = "TL_BAG_OBJECT_TYPE")
     private Long tlBagObjectType;
 
-//    @Column(name = "SECURITY_CODE_TYPE")
-//    private Long securityCodeType;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "SECURITY_CODE_TYPE", referencedColumnName = "CODE"
     )
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private SecurityTypeLp securityTypeLp;
 
     @Column(name = "SECURITY_CODE")

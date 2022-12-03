@@ -1,5 +1,6 @@
 package com.restful.dtcc.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @IdClass(OrganizationXrefId.class)
+@JsonFilter("organizationXrefFilter")
 public class OrganizationXref{
 
     @Id

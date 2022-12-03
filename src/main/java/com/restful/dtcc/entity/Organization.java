@@ -1,5 +1,6 @@
 package com.restful.dtcc.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ import java.util.Set;
 @Table(name = "ORGANIZATION")
 @Getter
 @Setter
+@JsonFilter("organizationFilter")
 public class Organization {
 
     @Id
@@ -67,11 +69,10 @@ public class Organization {
     private List<OrganizationXref> organizationXref;
 
 
-    @JsonIgnore
     @ManyToMany(
             fetch = FetchType.LAZY,
             mappedBy = "organizations"
     )
-    private Set<Location> locations = new HashSet<>();
+    private List<Location> locations;// = new ArrayList<Location>();
 
 }
