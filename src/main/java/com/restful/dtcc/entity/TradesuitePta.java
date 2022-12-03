@@ -216,8 +216,10 @@
 //    @Column(name = "ctm_block_ref_id")
 //    private String ctmBlockRefId;
 //
+//
 //    @Column(name = "ctm_detail_ref_id")
 //    private String ctmDetailRefId;
+//
 //
 //    @Column(name = "ctm_bkr_conf_id")
 //    private String ctmBkrConfId;

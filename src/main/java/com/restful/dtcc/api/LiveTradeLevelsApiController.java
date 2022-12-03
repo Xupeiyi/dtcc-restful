@@ -20,19 +20,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/api")
-public class LiveTradeLevelsApiController {
-
+public class LiveTradeLevelsApiController implements LiveTradeLevelsApi{
 
     @Autowired
     private LiveTradeLevelsRepository liveTradeLevelsRepository;
     @Autowired
     private OrganizationRepository orgRepo;
-
-//    @GetMapping("/live_trade_levels")
-//    public ResponseEntity<List<LiveTradeLevels>> getLiveTradeLevelsBySecurityCodeType(
-//            @RequestParam(value="securityCodeType") String securityCodeType){
-//        return new ResponseEntity<>(liveTradeLevelsRepository.findBySecurityTypeLpSecurityTypeGroupLpCode(securityCodeType), HttpStatus.OK);
-//    }
 
     @GetMapping("/live_trade_levels")
     public ResponseEntity<List<LiveTradeLevels>> getLiveTradeLevelsByXrefTypeAndXrefValueAndSecurityCodeType(

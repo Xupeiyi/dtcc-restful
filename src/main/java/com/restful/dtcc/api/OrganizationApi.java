@@ -24,5 +24,10 @@ public interface OrganizationApi {
     })
     ResponseEntity<List<Organization>> getAllOrgsByFamilyId(Long familyId);
 
+    @ApiOperation(value = "Get an organizations by its xref type and xref value", tags = {"Organization",})
+    @ApiResponses(value = {
+            @ApiResponse(code=200, message="OK", response=Organization.class)
+    })
+    ResponseEntity<Organization> getOrganizationByXrefTypeAndXrefValue(String xrefType, String xrefValue);
 
 }
