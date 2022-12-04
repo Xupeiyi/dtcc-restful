@@ -1,6 +1,7 @@
 package com.restful.dtcc.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.sql.Timestamp;
 @Setter
 @Entity
 @Table(name = "ALERT_ACCOUNT")
+@JsonFilter("alertAccountFilter")
 public class AlertAccount {
 
     @Id
@@ -117,6 +119,5 @@ public class AlertAccount {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ORGANIZATION_ID", referencedColumnName = "ORG_ID", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Organization organization;
 }

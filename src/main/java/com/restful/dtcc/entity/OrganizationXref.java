@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @IdClass(OrganizationXrefId.class)
-@JsonFilter("organizationXrefFilter")
+//@JsonFilter("organizationXrefFilter")
 public class OrganizationXref{
 
     @Id

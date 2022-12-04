@@ -1,5 +1,6 @@
 package com.restful.dtcc.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,16 +13,18 @@ import java.sql.Timestamp;
 @Table(name = "LIVE_TRADE_DETAILS")
 @Getter
 @Setter
+@JsonFilter("liveTradeDetailsFilter")
 public class LiveTradeDetails {
 
-    @Id
-    @Column(name = "TRADE_DETAIL_ID")
-    private Long tradeDetailId;
+    private static final long serialVersionUID = 1918446199175160468L;
+
+    @EmbeddedId
+    private LiveTradeDetailsId liveTradeDetailsId;
 
     @Column(name = "TD_BAG_OBJECT_TYPE")
     private Long tdBagObjectType;
 
-    @Column(name = "ACCURUED_INTEREST_AMOUNT")
+    @Column(name = "ACCRUED_INTEREST_AMOUNT")
     private Float accuruedInterestAmount;
 
     //account_id INT foreign key references ALERT_ACCOUNT(ACCOUNT_ID),
@@ -32,8 +35,8 @@ public class LiveTradeDetails {
     @Column(name = "SETTLEMENT_AMOUNT")
     private Float settlementAmount;
 
-    @Column(name = "QUANTITY_AMOUNT")
-    private Long quantityAmount;
+    @Column(name = "QUANTITY_ALLOCATED")
+    private Long quantityAllocated;
 
     @Column(name = "VERSION_OF_TRADE_COMPONENT")
     private Long versionOfTradeComponent;
@@ -78,7 +81,7 @@ public class LiveTradeDetails {
     @Column(name = "ERROR_STATUS")
     private Long errorStatus;
 
-    @Column(name = "T_HIGHEST_ERROR_SEVERITY_DTM")
+    @Column(name = "TD_HIGHEST_ERROR_SEVERITY_DTM")
     private Timestamp tHighestErrorSeverityDtm;
 
     @Column(name = "MATCH_STATUS_DTM")
@@ -127,8 +130,8 @@ public class LiveTradeDetails {
     @Column(name = "PACKED_COMMISSIONS")
     private Float packedCommissions;
 
-    @Column(name = "ASYNCH_COMMISSIONS")
-    private Boolean asynchErrorExists;
+    @Column(name = "asynch_error_exists")
+    private Boolean asyncErrorExists;
 
     @Column(name = "REPORTED_PRICE")
     private Float reportedPrice;
@@ -171,4 +174,6 @@ public class LiveTradeDetails {
     private Long largeTradeId;
 
     //constraint pk_live_trade_details primary key (trade_side_id, trade_detail_id)
+    @OneToOne(mappedBy = "liveTradeDetails")
+    private TradesuitePta tradesuitePta;
 }

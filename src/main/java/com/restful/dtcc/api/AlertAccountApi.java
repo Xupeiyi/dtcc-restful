@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface AlertAccountApi {
     @ApiResponses(value = {
             @ApiResponse(code=200, message="OK", response= AlertAccount.class, responseContainer = "List")
     })
-    ResponseEntity<List<AlertAccount>> getAlertAccountByOrgLocation(String politicalSubdivision);
+    MappingJacksonValue getAlertAccountByOrgLocation(String politicalSubdivision);
 }

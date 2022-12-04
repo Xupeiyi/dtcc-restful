@@ -21,16 +21,17 @@ public class UserInfoApiController implements UserInfoApi {
     @Autowired
     private UserInfoRepository userInfoRepository;
 
-    @GetMapping("/user_info/{userId}")
-    public ResponseEntity<UserInfo> getUserInfoByUserId(@PathVariable(value="userId") Long userId){
-        return new ResponseEntity<>(userInfoRepository.findByUserId(userId), HttpStatus.OK);
-    }
+//    @GetMapping("/user_info/{userId}")
+//    public ResponseEntity<UserInfo> getUserInfoByUserId(@PathVariable(value="userId") Long userId){
+//        return new ResponseEntity<>(userInfoRepository.findByUserId(userId), HttpStatus.OK);
+//    }
 
     @GetMapping("/user_info")
     public ResponseEntity<List<UserInfo>> getUserInfoByPoliticalSubdivisionAndRoleName(
             @RequestParam(value="politicalSubdivision") String politicalSubdivision,
             @RequestParam(value="roleName") String roleName
     ) {
+        // possible input: IA, Intelligent Trade Management User
         return new ResponseEntity<>(userInfoRepository.findByLocationsPoliticalSubdivisionAndRolesRoleName(
                 politicalSubdivision, roleName
             ), HttpStatus.OK
